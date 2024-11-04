@@ -19,18 +19,48 @@
     }
    
 }
+
+class RemoveElementSolution
+{
+    public int RemoveElement(int[] nums, int val)
+    {
+        int i = 0;
+        int cpt = 0;
+        while (i != nums.Length && nums[i] != int.MaxValue)
+        {
+            if (nums[i] == val)
+            {
+                cpt++;
+                int lastVal = nums[nums.Length - cpt];
+                nums[nums.Length - cpt] = int.MaxValue;
+                nums[i] = lastVal;
+            }
+            else
+            {
+                i++;
+            }
+
+        }
+        return cpt;
+    }
+
+}
 class Solutions
 {
     public static void Main(String[] args)
     {
-        MergeSortedArray sol = new MergeSortedArray();
-        int[] nums1 = new int[] { 1, 2, 3, 0, 0, 0 };
-        int[] nums2 = new int[] { 2, 5, 6 };
-        sol.Merge(nums1, 3, nums2, 3);
-        foreach (var item in nums1)
-        {
-            Console.WriteLine(item);
-        }
+        RemoveElementSolution sol = new RemoveElementSolution();
+        int[] nums = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+
+        Console.WriteLine(sol.RemoveElement(nums, 2));
+        //MergeSortedArray sol = new MergeSortedArray();
+        //int[] nums1 = new int[] { 1, 2, 3, 0, 0, 0 };
+        //int[] nums2 = new int[] { 2, 5, 6 };
+        //sol.Merge(nums1, 3, nums2, 3);
+        //foreach (var item in nums1)
+        //{
+        //    Console.WriteLine(item);
+        //}
     }
 }
 
